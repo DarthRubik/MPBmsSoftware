@@ -482,25 +482,7 @@ uint16_t GetBatteryTemp()
 	return ret;
 }
 
-void HandleFan()
-{
-	// Higher voltage means lower temp
-	uint16_t temp = GetBatteryTemp();
-	if (FAN_PORT & FAN_MASK)
-	{
-		if (temp >= BATTERY_TEMP_FAN_OFF)
-		{
-			FAN_PORT &= ~FAN_MASK;
-		}
-	}
-	else
-	{
-		if (temp <= BATTERY_TEMP_FAN_ON)
-		{
-			FAN_PORT |= FAN_MASK;
-		}
-	}
-}
+
 
 bool IsTempSafe()
 {
